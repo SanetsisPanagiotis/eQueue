@@ -1,0 +1,7 @@
+register(username, email, password): Observable<any>{
+  let url: string = 'rest-auth/register/';
+  let user = new User(username,email,password);
+  var credentials = new Credentials2(username, email,password);
+  console.log("ekei");
+  return this.http.post('http://127.0.0.1:8000/api/users/', JSON.stringify(credentials));}
+this.router.navigate(['/login']);

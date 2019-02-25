@@ -1,0 +1,57 @@
+<div class="row">
+ <div class="column">
+    <br><div *ngIf="book">
+   <div><h2><span appItalics> {{ book.title }}</span> details:</h2>
+   <div><label>Id: </label>  {{book.id}}</div>
+
+   <div><label>Title: </label>  {{book.title}}</div>
+   <div><label>Est.: </label>  {{book.pub_year}}</div>
+   <div><label>Critics' Grade: </label>  {{book.grade}}</div></div>
+   <div *ngIf=check()><div><label><u>We have </u></label>  {{book.availability}} <label><u> table(s) available.</u></label> </div></div>
+   <div *ngIf=!check()><div><label><u>We have NO table(s) available.</u></label></div></div>
+   <div><label>About: </label> {{book.about}}</div><br>
+   <div><label>Image: </label> <img src={{book.url}} alt="Restaurant Image could not Load from Server" height="200" width="200"></div>
+
+
+   <ul class="users">
+     <div *ngFor="let user of users">
+       <div *ngIf="user.username==username ">
+         <br>Click to make a reservation for tonight.<br>
+         Once you click here the reservation is completed<br> and will appear
+         in your reservations.<br>
+         <div *ngIf=check()> <a routerLink="/reservations">
+           <button (click)="reserve(user.id)"><b><u>RESERVE HERE</u></b></button>
+         </a></div>
+         <div *ngIf=!check()><br><u> You cannot Reserve. We are full. Come by later.</u></div>
+         <!--<button (click)="increase()">Increase</button>
+       --<button class="delete" title="delete book"
+               (click)="delete(book)">x</button>---></div>
+     </div>
+   </ul>
+
+   <!--<button (click)="reserve(myVariable)">Reduce</button>-->
+
+
+ </div>
+</div>
+ <div class="column"><br><app-reviews></app-reviews></div>
+
+   <!--<ul class="users">
+     <div *ngFor="let user of users">
+
+       <div *ngIf="user.username==username ">
+         {{user.id}}
+       -<button class="delete" title="delete book"
+               (click)="delete(book)">x</button>-</div>
+     </div>
+   </ul>-->
+
+
+  <!--
+  <div><label>About: </label>{{book.address}}</div></div>
+  <button (click)="goBack()">go back</button><div><label>About: </label>  {{reduce()}}</div>
+  <button (click)="save()">Save</button>-->
+
+
+
+</div>

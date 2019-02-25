@@ -1,0 +1,54 @@
+<!--<div [ngStyle]="{background: 'url(lark.jpg)'}">--><br><h1>Contact us</h1>
+<br>
+<div class="row" *ngIf="!auth.isLoggedIn" >
+  You should be Logged In to submit a Contact Form.
+  <form class="form-signin"><br><br>
+    <button (click)="redirect()"
+            class="btn btn-lg btn-primary btn-block">Proceed to Login</button>
+  </form>
+</div>
+<!--<div class="container">
+  <div class="row">
+    <a *ngFor="let user of users" class="col-sm">
+      <div class="dashboard-item">
+        {{user.id}}<br>
+        {{user.username}}<br>
+        {{user.email}}
+      </div>
+    </a><
+  </div>
+</div>
+<img class="img-responsive" src="../images/lark.jpg">-->
+<h3 *ngIf="success"><font color="green">Successful message</font></h3>
+<div *ngIf="vara" class="results">
+  <u>Your Message was:</u> <br>
+  <strong>Name: </strong>
+  <span>{{ messageForm.controls.name.value }}</span>
+  <br>
+  <strong>Message: </strong>
+  <span>{{ messageForm.controls.message.value }}</span>
+</div>
+
+<div *ngIf="!success">
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" *ngIf="auth.isLoggedIn" >
+    <label>
+      Title:
+      <input type="text" [(ngModel)]="contact.title" formControlName="name">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required"><font color="red">Title is required</font></div>
+      </div>
+    </label>
+
+    <label>
+      Text:
+      <textarea [(ngModel)]="contact.text" formControlName="message"></textarea>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required"><font color="red">Text is required</font></div>
+      </div>
+    </label>
+    <br>
+    <input type="submit" value="Send message" class="cta">
+
+  </form>
+
+</div>

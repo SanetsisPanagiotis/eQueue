@@ -1,0 +1,67 @@
+<div class="row" *ngIf="auth.isLoggedIn" >{{redirect()}}</div>
+
+<div class="container">
+	<div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-info">
+          <div class="panel-heading">
+              <div class="panel-title">Sign Up /
+              <a class="pull-right" style="text-decoration: none" id="signinlink" routerLink="/login">Login</a>
+              </div>
+          </div>
+          <div class="panel-body" >
+
+
+							<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+                  <div id="signupalert" style="display:none" class="alert alert-danger">
+                      <p>Error:</p>
+                      <span></span>
+                  </div>
+									<label>
+					          Username:
+					          <input type="text" [(ngModel)]="register.username" formControlName="username">
+					          <div *ngIf="submitted && messageForm.controls.username.errors" class="error">
+					            <div *ngIf="messageForm.controls.username.errors.required"><font color="red">Your name is required</font></div>
+					          </div>
+					        </label>
+
+									<label>
+					          Password:
+					          <input type="password" [(ngModel)]="register.password1" formControlName="password1">
+					          <div *ngIf="submitted && messageForm.controls.password1.errors" class="error">
+					            <div *ngIf="messageForm.controls.password1.errors.required"><font color="red">Your password is required</font></div>
+											<div *ngIf="messageForm.controls.password1.errors.minlength"><font color="red">Password must be at least 8 characters</font></div>
+										</div>
+					        </label>
+									<label>
+					          Passwd 2:
+					          <input type="password" [(ngModel)]="register.password2" formControlName="password2">
+					          <div *ngIf="submitted && messageForm.controls.password2.errors" class="error">
+					            <div *ngIf="messageForm.controls.password2.errors.required"><font color="red">Retype Password </font></div>
+											<div *ngIf="messageForm.controls.password2.errors.minlength"><font color="red">Password must be at least 8 characters</font></div>
+											<div *ngIf="messageForm.controls.password2.errors.mustMatch"><font color="red">Passwords must match</font></div>
+										</div>
+					        </label>
+
+									<label>
+					          Email adr:
+					          <input type="email" [(ngModel)]="register.email" formControlName="email">
+					          <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+					            <div *ngIf="messageForm.controls.email.errors.required"><font color="red">Your email is required</font></div>
+											<div *ngIf="messageForm.controls.email.errors.email"><font color="red">Not correct type of email</font></div>
+										</div>
+					        </label>
+
+									<div class="form-group">
+                      <div class="col-md-offset-3 col-md-9">
+												<button (click)="registerUser()"
+																class="btn btn-lg btn-primary btn-block"
+																type="submit">Register</button>
+                      </div>
+                  </div>
+              </form>
+
+
+           </div>
+      </div>
+   </div>
+</div>

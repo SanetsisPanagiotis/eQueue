@@ -1,0 +1,51 @@
+<div class="container">
+
+  <span [ngSwitch]="auth.isLoggedIn">
+    <span *ngSwitchCase="false">
+      <h3>Login</h3>
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+        <label>
+          Username:
+          <input type="text" [(ngModel)]="useri.username" formControlName="username">
+          <div *ngIf="submitted && messageForm.controls.username.errors" class="error">
+            <div *ngIf="messageForm.controls.username.errors.required"><font color="red">Your name is required</font></div>
+          </div>
+        </label>
+
+        <br><label>
+          Password :
+          <input type="password" [(ngModel)]="useri.password" formControlName="password">
+          <div *ngIf="submitted && messageForm.controls.password.errors" class="error">
+            <div *ngIf="messageForm.controls.password.errors.required"><font color="red">A password is required</font></div>
+          </div>
+        </label>
+        <br><br>
+        <input type="submit" value="Login" class="cta">
+
+      </form>
+
+      <!--<form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Email address</label>
+        <input #username
+               type="text" id="username" class="form-control"
+               placeholder="username" required="" autofocus="">
+        <label for="password" class="sr-only">Password</label>
+        <input #password
+               type="password" id="password" class="form-control"
+               placeholder="Password" required="">
+
+        <button (click)="login(username.value, password.value)"
+                class="btn btn-lg btn-primary btn-block"
+                type="submit">Sign in</button>
+      </form>-->
+    </span>
+    <span *ngSwitchCase="true">
+      <br><br><form class="form-signin"><br>
+        <button (click)="logout()"
+                class="btn btn-lg btn-primary btn-block">Logout</button>
+      </form><br><br>
+    </span>
+  </span>
+
+</div>

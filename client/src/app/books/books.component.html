@@ -1,0 +1,11 @@
+<br><h2>Restaurants</h2>
+
+<ul class="books">
+  <li *ngFor="let book of books">
+    <a routerLink="/restaurants/{{book.id}}">
+      <span class="badge">{{book.id}}</span> {{book.title}}
+    </a>
+    <!---<button class="delete" title="delete book"
+            (click)="delete(book)">x</button>--->
+  </li>
+</ul>

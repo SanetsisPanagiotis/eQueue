@@ -1,0 +1,12 @@
+<br><h3>Top 5 Recommended Restaurants</h3>
+<div class="container">
+  <div class="row">
+    <a *ngFor="let book of books" class="col-sm"
+       routerLink="/restaurants/{{book.id}}">
+      <div class="dashboard-item">
+        <h5>{{book.title}}</h5>
+      </div>
+    </a>
+  </div>
+</div>
+<br>

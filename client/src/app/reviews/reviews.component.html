@@ -1,0 +1,92 @@
+<div class="container">
+  <h3>Reviews</h3>
+
+  <div class="row justify-content-start">
+    <div class="col-4">
+
+        <li *ngFor="let review of reviews">
+          <label><u>Title: </u></label> {{ review.title }}<br>
+          <u><label><u>Grade: </u></label></u> {{ review.grade }}<br>
+          <u><label><u>Content: </u></label></u> {{ review.text }}
+        </li>
+
+    </div>
+  </div>
+
+<span *ngIf="!this.vara">
+  <div class="row justify-content-start" *ngIf="auth.isLoggedIn">
+    <div class="col-4">
+      <br><h4>Your Review: </h4>
+
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+        <label for="title">
+          Title:
+          <input type="text" [(ngModel)]="review.title" formControlName="title">
+          <div *ngIf="submitted && messageForm.controls.title.errors" class="error">
+            <div *ngIf="messageForm.controls.title.errors.required"><font color="red">Title is required</font></div>
+          </div>
+        </label>
+
+        <label for="text">
+          Grade:
+          <input type="number" [(ngModel)]="review.grade" formControlName="grade">
+          <div *ngIf="submitted && messageForm.controls.grade.errors" class="error">
+            <div *ngIf="messageForm.controls.grade.errors.required"><font color="red">Grade is required (Must be a number.)</font></div>
+          </div>
+        </label>
+
+        <label for="text">
+          Text:
+          <input type="text" [(ngModel)]="review.text" formControlName="text">
+          <div *ngIf="submitted && messageForm.controls.text.errors" class="error">
+            <div *ngIf="messageForm.controls.text.errors.required"><font color="red">Text is required</font></div>
+          </div>
+        </label>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+
+
+
+      <!--
+
+      <form (ngSubmit)="onSubmit()" #reviewForm="ngForm">
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text"
+                 class="form-control"
+                 id="title"
+                 [(ngModel)]="review.title"
+                 name="title"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <label for="text">Grade</label>
+          <input type="number"class="form-control" min="1" max="5"
+                    id="grade"
+                    [(ngModel)]="review.grade"
+                    name="number">
+        </div>
+
+        <div class="form-group">
+          <label for="text">Content</label>
+          <textarea class="form-control"
+                    rows="5"
+                    id="text"
+                    [(ngModel)]="review.text"
+                    name="text">
+            </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>-->
+    </div>
+  </div>
+</span>
+
+</div>

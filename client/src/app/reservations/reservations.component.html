@@ -20,7 +20,11 @@
                   Username: {{user.username}}<br>-->
                   <div *ngIf="book.id==reservation.book">
                     Restaurant: <u><b>{{ book.title }}</b></u><br>
-                    Date placed: {{ reservation.date  | date: "dd-MM-yyyy"}}<br><br>
+                    Date placed: {{ reservation.date  | date: "dd-MM-yyyy"}}<br>
+                    Once you press Delete, the reservation is gone:
+                    <form class="form-signin">
+                      <button (click)="delete(reservation.id)"
+                            class="btn btn-lg btn-primary btn-block">Delete</button></form>
                   </div>
                 </div>
               </div>

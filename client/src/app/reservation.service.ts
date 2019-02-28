@@ -47,7 +47,7 @@ export class ReservationService {
   deleteReservation (reservation: Reservation | number): Observable<Reservation> {
     const id = typeof reservation === 'number' ? reservation : reservation.id;
     let url1 = `api/reservations`;
-    const url = ``;
+    const url = `${url1}/${id}`;
 
     return this.http.delete<Reservation>(url, httpOptions).pipe(
       tap(_ => this.message.add(`deleted reservation id=${id}`)),

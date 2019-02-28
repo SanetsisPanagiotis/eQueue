@@ -1,0 +1,12 @@
+.nav.navbar-nav.navbar-right li a {
+    color: blue;
+}
+
+
+.nav.navbar-nav.navbar-right a {
+    color: blue;
+}
+
+.nav.navbar-nav.navbar-right li a span{
+    color: blue;
+}

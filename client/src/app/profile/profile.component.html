@@ -4,6 +4,7 @@
 <div  *ngIf="auth.isLoggedIn">
   <div *ngFor="let user of users">
     <div *ngIf="auth.username===user.username">
+      <img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt="Restaurant Image could not Load from Server" height="100" width="100">
       <br><u>Username:</u> {{user.username}}<br><br>
       <u>E-mail:</u> {{user.email}}<br><br>
       <u>First Name:</u> {{user.first_name}}<br><br>

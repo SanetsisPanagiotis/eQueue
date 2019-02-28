@@ -1,7 +1,10 @@
 import { Component, OnInit, Input} from '@angular/core';
+
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/toPromise';
+
 import {HttpClientModule} from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Reservation } from '../reservation';
@@ -23,7 +26,7 @@ export class ReservationsComponent implements OnInit {
   reservations: Reservation[];
   reservation: Reservation;
   books: Book[];
-
+  //private isButtonVisible = false;
   @Input()
   users: User;
 
@@ -62,6 +65,7 @@ export class ReservationsComponent implements OnInit {
     this.getUser();
     this.getReservations();
     this.getBooks();
+
   }
 
   getBooks(): void {
@@ -80,6 +84,12 @@ export class ReservationsComponent implements OnInit {
 
   redirect(): void {
     this.router.navigate(['/login']);
+  }
+
+  async delete(reservation: Reservation){
+    this.reservations = this.reservations.filter(h => h !== reservation);
+    await this.reservationService.deleteReservation(reservation).subscribe();
+    location.reload();
   }
 
 }
